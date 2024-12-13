@@ -4,7 +4,7 @@
     <div class="max-w-4xl mx-auto px-6">
       <div class="mb-12 rounded-xl overflow-hidden shadow-lg">
         <img
-          src="@/assets/images/contact-header.jpg"
+          src="@/assets/images/contactme.png"
           alt="Contact"
           class="w-full h-auto object-cover"
         />

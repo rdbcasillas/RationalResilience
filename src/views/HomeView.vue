@@ -140,7 +140,7 @@ import { Brain, Heart, Target, ArrowRight, Quote } from "lucide-vue-next";
 import meditationSpace from "@/assets/images/meditation-space.png";
 import phoenix from "@/assets/images/phoenix.png";
 import neuralConstellation from "@/assets/images/manmeditating.png";
-import seeingMind from "@/assets/images/seeingMind.png";
+import seeingMind from "@/assets/images/seeingmind.png";
 
 const approaches = ref([
   {
