@@ -23,19 +23,19 @@
         <ul class="space-y-3 mb-8">
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>4 sessions per month</span>
+            <span>Weekly 90-minute sessions to maintain momentum</span>
           </li>
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Personalized roadmap for growth</span>
+            <span>Custom growth plan that evolves with your progress</span>
           </li>
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Ongoing support and accountability</span>
+            <span>Regular check-ins and support between sessions</span>
           </li>
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Progress Tracking to update ineffective solutions</span>
+            <span>Ongoing refinement of strategies based on what works</span>
           </li>
           <!-- Other features -->
         </ul>

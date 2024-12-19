@@ -16,20 +16,20 @@
         <ul class="space-y-3 mb-8">
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>90-minute deep dive</span>
+            <span>90-minute in-depth exploration of your situation</span>
           </li>
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Discuss your goals and challenges</span>
+            <span>Tools and frameworks to see things with more clarity</span>
           </li>
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Identify your strengths and resources</span>
+            <span>Identify blocks and opportunities</span>
           </li>
 
           <li class="flex items-center">
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Develop an action plan</span>
+            <span>Clear next steps to move forward</span>
           </li>
         </ul>
       </div>

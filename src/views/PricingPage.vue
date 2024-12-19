@@ -19,7 +19,7 @@
     </div>
 
     <!-- Session Types -->
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
       <!-- Single Session -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden">
         <div class="p-8">
@@ -38,20 +38,20 @@
           <ul class="space-y-3 mb-8">
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>90-minute deep dive</span>
+              <span>90-minute in-depth exploration of your situation</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Discuss your goals and challenges</span>
+              <span>Tools and frameworks to see things with more clarity</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Identify your strengths and resources</span>
+              <span>Identify blocks and opportunities</span>
             </li>
 
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Develop an action plan</span>
+              <span>Clear next steps to move forward</span>
             </li>
           </ul>
         </div>
@@ -83,19 +83,19 @@
           <ul class="space-y-3 mb-8">
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>4 sessions per month</span>
+              <span>Weekly 90-minute sessions to maintain momentum</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Personalized roadmap for growth</span>
+              <span>Custom growth plan that evolves with your progress</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Ongoing support and accountability</span>
+              <span>Regular check-ins and support between sessions</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Progress Tracking to update ineffective solutions</span>
+              <span>Ongoing refinement of strategies based on what works</span>
             </li>
           </ul>
         </div>
@@ -106,44 +106,6 @@
           >
             Start Monthly Journey
           </router-link>
-        </div>
-      </div>
-
-      <!-- Custom Package -->
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div class="p-8">
-          <h3 class="font-bold text-xl mb-4">Custom Package</h3>
-          <div class="mb-2">
-            <span class="text-xl">Let's design together</span>
-          </div>
-          <p class="text-gray-600 mb-6">
-            Flexible support tailored to your specific needs and schedule.
-          </p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center">
-              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Flexible session frequency</span>
-            </li>
-            <li class="flex items-center">
-              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Customized focus areas</span>
-            </li>
-            <li class="flex items-center">
-              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Adjustable support level</span>
-            </li>
-            <li class="flex items-center">
-              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Commitment flexibility</span>
-            </li>
-          </ul>
-        </div>
-        <div class="p-6 bg-gray-50">
-          <button
-            class="w-full border-2 border-blue-600 text-blue-600 rounded-lg py-3 px-4 hover:bg-blue-50 transition"
-          >
-            Let's Talk
-          </button>
         </div>
       </div>
     </div>
