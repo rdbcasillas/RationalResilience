@@ -3,6 +3,11 @@
   <div class="pt-16 pb-16">
     <div class="max-w-4xl mx-auto px-6">
       <h1 class="text-3xl font-bold mb-6 text-center">Start Monthly Journey</h1>
+      <h3 class="text-xl mb-6 text-justify">
+        Please book your first session below. After booking, you'll receive
+        instructions to set up the remaining three sessions for optimal spacing
+        throughout the month.
+      </h3>
 
       <!-- Package Details -->
       <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
@@ -20,84 +25,49 @@
             <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
             <span>4 sessions per month</span>
           </li>
+          <li class="flex items-center">
+            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
+            <span>Personalized roadmap for growth</span>
+          </li>
+          <li class="flex items-center">
+            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
+            <span>Ongoing support and accountability</span>
+          </li>
+          <li class="flex items-center">
+            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
+            <span>Progress Tracking to update ineffective solutions</span>
+          </li>
           <!-- Other features -->
         </ul>
 
-        <!-- Payment Options -->
-        <div class="space-y-4 mb-8">
-          <h3 class="font-semibold">Payment Options:</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <button
-              @click="showUPIModal = true"
-              class="p-4 border rounded-lg hover:bg-gray-50"
-            >
-              UPI/GPay
-            </button>
-            <button
-              @click="showPayPalModal = true"
-              class="p-4 border rounded-lg hover:bg-gray-50"
-            >
-              International Payment
-            </button>
-          </div>
-        </div>
-
-        <!-- UPI Modal -->
-        <div
-          v-if="showUPIModal"
-          class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          @click="showUPIModal = false"
-        >
-          <div class="bg-white p-6 rounded-lg max-w-xl w-full" @click.stop>
-            <h3 class="text-lg font-bold mb-4">Pay via UPI</h3>
-            <div class="text-center mb-4">
-              <p class="mb-2 font-bold">mehra.vatsal@okhdfcbank</p>
-              <img
-                src="@/assets/images/myqrcode.png"
-                alt="UPI QR Code"
-                class="mx-auto"
-              />
-            </div>
-            <button
-              @click="showUPIModal = false"
-              class="w-full bg-blue-600 text-white p-2 rounded"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-
-        <!-- PayPal Modal -->
-        <div
-          v-if="showPayPalModal"
-          class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          @click="showPayPalModal = false"
-        >
-          <div class="bg-white p-6 rounded-lg max-w-xl w-full" @click.stop>
-            <h3 class="text-lg font-bold mb-4">Pay via PayPal</h3>
-            <div class="text-center mb-4">
-              <p class="mb-2 font-bold">mehra.vatsal@gmail.com</p>
-              <img
-                src="@/assets/images/mypaypal.jpeg"
-                alt="Paypal QR Code"
-                class="mx-auto w-100 h-100"
-              />
-            </div>
-            <button
-              @click="showPayPalModal = false"
-              class="w-full bg-blue-600 text-white p-2 rounded"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+        <PaymentOptions />
 
         <!-- Scheduling Calendar -->
-        <div
-          id="my-cal-inline"
-          class="z-0"
-          style="width: 100%; height: 100vh; overflow: scroll"
-        ></div>
+        <!-- Cal.com Embed with Loading States -->
+        <div class="relative">
+          <!-- Loading Message -->
+          <div v-if="isLoading" class="text-center py-8">
+            <p class="text-blue-600 text-lg animate-pulse">
+              Fetching calendar...
+            </p>
+          </div>
+
+          <!-- Error Message -->
+          <div v-if="hasError" class="text-center py-8">
+            <p class="text-red-600 text-lg mb-4">Unable to load calendar</p>
+            <button
+              @click="reloadCalendar"
+              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Refresh Page
+            </button>
+          </div>
+
+          <div
+            id="my-cal-inline"
+            style="width: 100%; height: 100vh; overflow: scroll"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -106,62 +76,78 @@
 <script setup>
 import { CheckCircle } from "lucide-vue-next";
 import { ref, onMounted, watch } from "vue";
+import PaymentOptions from "@/components/PaymentOptions.vue";
 
-const showUPIModal = ref(false);
-const showPayPalModal = ref(false);
+const isLoading = ref(true);
+const hasError = ref(false);
 
-watch(showUPIModal, (newValue) => {
-  if (newValue) {
-    document.body.classList.add("overflow-hidden");
-  } else {
-    document.body.classList.remove("overflow-hidden");
+const initializeCalendar = () => {
+  try {
+    (function (C, A, L) {
+      let p = function (a, ar) {
+        a.q.push(ar);
+      };
+      let d = C.document;
+      C.Cal =
+        C.Cal ||
+        function () {
+          let cal = C.Cal;
+          let ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {};
+            cal.q = cal.q || [];
+            d.head.appendChild(d.createElement("script")).src = A;
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const api = function () {
+              p(api, arguments);
+            };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            typeof namespace === "string"
+              ? (cal.ns[namespace] = api) && p(api, ar)
+              : p(cal, ar);
+            return;
+          }
+          p(cal, ar);
+        };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", "90min", { origin: "https://cal.com" });
+    Cal.ns["90min"]("inline", {
+      elementOrSelector: "#my-cal-inline",
+      config: { layout: "month_view", theme: "light" },
+      calLink: "vatsal-mehra-tblt4g/90min",
+    });
+    Cal.ns["90min"]("ui", {
+      theme: "light",
+      cssVarsPerTheme: { light: { "cal-brand": "#85bde2" } },
+      hideEventTypeDetails: false,
+      layout: "month_view",
+    });
+
+    // Set timeout to check if calendar loaded
+    setTimeout(() => {
+      const calendarElement = document.querySelector("#my-cal-inline iframe");
+      if (!calendarElement) {
+        hasError.value = true;
+      }
+      isLoading.value = false;
+    }, 5000); // Check after 5 seconds
+  } catch (error) {
+    console.error("Calendar initialization failed:", error);
+    hasError.value = true;
+    isLoading.value = false;
   }
-});
+};
+
+const reloadCalendar = () => {
+  window.location.reload();
+};
 
 onMounted(() => {
-  (function (C, A, L) {
-    let p = function (a, ar) {
-      a.q.push(ar);
-    };
-    let d = C.document;
-    C.Cal =
-      C.Cal ||
-      function () {
-        let cal = C.Cal;
-        let ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          d.head.appendChild(d.createElement("script")).src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function () {
-            p(api, arguments);
-          };
-          const namespace = ar[1];
-          api.q = api.q || [];
-          typeof namespace === "string"
-            ? (cal.ns[namespace] = api) && p(api, ar)
-            : p(cal, ar);
-          return;
-        }
-        p(cal, ar);
-      };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "90min", { origin: "https://cal.com" });
-
-  Cal.ns["90min"]("inline", {
-    elementOrSelector: "#my-cal-inline",
-    config: { layout: "month_view", theme: "light" },
-    calLink: "vatsal-mehra-tblt4g/90min",
-  });
-  Cal.ns["90min"]("ui", {
-    theme: "light",
-    cssVarsPerTheme: { light: { "cal-brand": "#85bde2" } },
-    hideEventTypeDetails: false,
-    layout: "month_view",
-  });
+  initializeCalendar();
 });
 </script>
 

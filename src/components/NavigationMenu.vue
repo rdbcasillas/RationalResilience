@@ -5,10 +5,18 @@
       <div class="flex justify-between items-center py-4">
         <!-- Logo and Brand Name -->
         <div class="flex items-center">
-          <Brain class="w-8 h-8 text-blue-600 mr-2" />
-          <span class="font-bold text-xl text-gray-900"
-            >Rational Resilience</span
-          >
+          <router-link to="/" class="flex items-center">
+            <img
+              src="@/assets/images/ratreslogo2.png"
+              alt="Rational Resilience Logo"
+              class="w-14 h-14"
+            />
+            <span
+              class="font-bold text-xl bg-gradient-to-r from-pink-500 via-blue-500 to-purple-500 text-transparent bg-clip-text"
+            >
+              Rational Resilience
+            </span>
+          </router-link>
         </div>
 
         <!-- Desktop Navigation -->

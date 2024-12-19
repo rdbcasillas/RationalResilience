@@ -51,9 +51,6 @@
       <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-4xl font-bold text-center mb-16 relative">
           My Approach
-          <div
-            class="absolute w-24 h-1 bg-blue-600 bottom-0 left-1/2 transform -translate-x-1/2 mt-4"
-          ></div>
         </h2>
         <div class="grid md:grid-cols-3 gap-12">
           <div
@@ -88,9 +85,6 @@
       <div class="max-w-5xl mx-auto px-6">
         <h2 class="text-4xl font-bold text-center mb-16 relative">
           Client Experiences
-          <div
-            class="absolute w-24 h-1 bg-blue-600 bottom-0 left-1/2 transform -translate-x-1/2 mt-4"
-          ></div>
         </h2>
         <div class="grid md:grid-cols-2 gap-12">
           <div
@@ -124,11 +118,14 @@
           Let's have a conversation about your goals and how we can work
           together to achieve them.
         </p>
-        <button
-          class="bg-white text-blue-600 px-10 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+        <a
+          href="https://cal.com/vatsal-mehra-tblt4g/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white text-blue-600 px-10 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg inline-block"
         >
           Schedule a Free Consultation
-        </button>
+        </a>
       </div>
     </section>
   </div>
@@ -147,7 +144,7 @@ const approaches = ref([
     icon: Brain,
     title: "Clear Seeing",
     description:
-      "Learn to use tools from rationality and systems thinking to see situations from fresh angles. Question assumptions and navigate complexity with confidence.",
+      "Learn to use tools from rationality and systems thinking to see situations from fresh angles. Question assumptions and untangle messy problems.",
     image: seeingMind,
   },
   {
@@ -168,12 +165,12 @@ const approaches = ref([
 
 const testimonials = ref([
   {
-    text: "Through our sessions, I've gained clarity and practical tools to navigate life's challenges. The blend of rational thinking and emotional support was exactly what I needed.",
-    author: "- Alex M.",
+    text: "Getting in touch with Vatsal wasn't premeditated but I am thankful that it did happen. I was at a point in life, being where it felt like nothing was ever going to be okay. Like I was going to be in that state forever. Vatsal provided a genuinely judgement-free and safe space. Every issue was (and still is) first acknowledged, then understood from a place of empathy and best interest towards well being and growth, and then logical and practical solutions are being worked out through continuous deliberation.     I am so grateful for that. It was the first session then and it is Dec, 2024, now, I can attest that I am out of the state that I initially was in. A lil bit of kindness, tangible assitance and a new perspective really pulled me out of that dark pit.",
+    author: "- Isabelle",
   },
   {
-    text: "What sets this coaching apart is the perfect balance of compassion and logical problem-solving. I've made more progress in months than I did in years of trying on my own.",
-    author: "- Sam R.",
+    text: "When I felt confused, scared and lost, Vatsal was there to guide me through it all, offering unwavering support and clarity. His guidance not only helped me overcome my struggles but also led me to understand who I truly am. I am deeply grateful for his help and for this place, which has been a life-changing source of comfort and growth for me.",
+    author: "- Mano",
   },
 ]);
 </script>

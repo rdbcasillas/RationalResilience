@@ -42,11 +42,16 @@
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Action steps to take forward</span>
+              <span>Discuss your goals and challenges</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Follow-up email support</span>
+              <span>Identify your strengths and resources</span>
+            </li>
+
+            <li class="flex items-center">
+              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
+              <span>Develop an action plan</span>
             </li>
           </ul>
         </div>
@@ -62,11 +67,6 @@
 
       <!-- Monthly Package -->
       <div class="bg-white rounded-xl shadow-lg overflow-hidden relative">
-        <div
-          class="absolute top-0 right-0 bg-blue-600 text-white px-3 py-1 rounded-bl-lg text-sm"
-        >
-          Most Effective
-        </div>
         <div class="p-8">
           <h3 class="font-bold text-xl mb-4">Monthly Journey</h3>
           <div class="flex justify-between items-baseline mb-4">
@@ -87,11 +87,15 @@
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Personalized practices</span>
+              <span>Personalized roadmap for growth</span>
             </li>
             <li class="flex items-center">
               <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-              <span>Progress tracking</span>
+              <span>Ongoing support and accountability</span>
+            </li>
+            <li class="flex items-center">
+              <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
+              <span>Progress Tracking to update ineffective solutions</span>
             </li>
           </ul>
         </div>

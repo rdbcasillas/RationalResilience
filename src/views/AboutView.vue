@@ -18,22 +18,18 @@
         </div>
 
         <!-- Intro Text -->
-        <div>
-          <h3 class="text-xl mb-4">
-            Think clearly, feel deeply. I'm Vatsal, and that's what I help
-            people do
-          </h3>
+        <div class="text-justify">
+          <h3 class="text-xl mb-4">Find clarity. Feel grounded.</h3>
           <p class="text-gray-600 mb-6">
-            I help people navigate complexity by bringing together clear
-            thinking and emotional wisdom, working towards both personal growth
-            and collective flourishing.
+            I guide people to find clarity and inner wisdom so they can take
+            action, create a life they love and make a positive impact.
           </p>
         </div>
       </div>
     </div>
 
     <!-- Story Section -->
-    <div class="max-w-3xl mx-auto px-6 mt-16">
+    <div class="max-w-3xl mx-auto px-6 mt-16 text-justify">
       <h2 class="text-2xl font-bold mb-6">My Journey</h2>
       <div class="prose prose-lg text-gray-600">
         <p class="mb-6">
@@ -78,7 +74,7 @@
           evidence-based tools for clear thinking with deep emotional work. I
           create a supportive container where you can explore both the logical
           and emotional dimensions of your challenges. This might involve parts
-          work, authentic relating practices, or rational decision-making
+          work, authentic relating practices or rational decision-making
           frameworks – always tailored to what works for you.
         </p>
         <p class="mb-6">
@@ -100,7 +96,7 @@
           coaching as part of a larger mission to explore meaningful ways to
           address the metacrises. Along with my work at
           <a
-            href="https://portal-website-url.com"
+            href="https://enterportal.netlify.app"
             class="text-blue-600 hover:text-blue-800 underline"
             target="_blank"
             >Portal</a
