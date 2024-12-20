@@ -63,12 +63,16 @@
           >
             {{ item.name }}
           </router-link>
-          <router-link
-            to="/sessions"
-            class="group bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1"
-          >
-            Book Session
-          </router-link>
+          <div class="mt-4 pt-4 border-t">
+            <!-- Added padding and border for separation -->
+            <router-link
+              to="/sessions"
+              class="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              @click="isOpen = false"
+            >
+              Book Session
+            </router-link>
+          </div>
         </div>
       </div>
     </div>

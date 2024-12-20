@@ -142,21 +142,21 @@ import seeingMind from "@/assets/images/seeingmind.png";
 const approaches = ref([
   {
     icon: Brain,
-    title: "Clear Seeing",
+    title: "Clear Thinking",
     description:
       "Learn to use tools from rationality and systems thinking to see situations from fresh angles. Question assumptions and untangle messy problems.",
     image: seeingMind,
   },
   {
     icon: Heart,
-    title: "Inner Wisdom",
+    title: "Inner Harmony",
     description:
       "Create space for all parts of yourself through practices like IFS and Focusing. Learn to listen to your inner world with curiosity instead of judgment.",
     image: neuralConstellation,
   },
   {
     icon: Target,
-    title: "Active Growth",
+    title: "Embodied Growth",
     description:
       "Turn insights into real experiments. Test ideas in the real world, learn from feedback, and find ways forward that feel genuine and meaningful.",
     image: phoenix,
