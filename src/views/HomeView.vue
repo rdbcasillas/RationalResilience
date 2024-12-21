@@ -113,10 +113,12 @@
       class="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white"
     >
       <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-8">Ready to Start Your Journey?</h2>
-        <p class="mb-12 text-xl opacity-90 max-w-2xl mx-auto">
-          Let's have a conversation about your goals and how we can work
-          together to achieve them.
+        <h2 class="text-4xl font-bold mb-6">
+          Want to See if We're a Good Fit?
+        </h2>
+        <p class="mb-10 text-xl text-white/90 max-w-3xl mx-auto">
+          Book a free session to discuss your challenges and explore how we can
+          work together.
         </p>
         <a
           href="https://cal.com/vatsal-mehra-tblt4g/30min"
