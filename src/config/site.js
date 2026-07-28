@@ -1,0 +1,80 @@
+// Single source of truth for prices, booking links and contact details.
+// Change a rate here and every page updates.
+
+export const CAL_INTRO_URL = "https://cal.com/vatsal-mehra-tblt4g/30min";
+export const CAL_SESSION_LINK = "vatsal-mehra-tblt4g/60min";
+
+// Personal portfolio: projects, timeline, education, résumé.
+export const PORTFOLIO_URL = "https://vatsalmehra.com";
+
+export const CONTACT = {
+  email: "mehra.vatsal@gmail.com",
+  telegram: "https://t.me/zerotimer",
+  signal:
+    "https://signal.me/#eu/LcnHg1Pc4iibfEwutJo9u3ZiBCZC0Kng9bGGHkWj6p9eVepYygBI7o8yL0q2i53D",
+};
+
+// Visitors outside India are quoted in USD, everyone else in rupees. The
+// browser's timezone is a good enough signal and avoids sending anyone off to a
+// third-party geolocation service.
+const INDIA_TIMEZONES = ["Asia/Kolkata", "Asia/Calcutta"];
+
+export const isInIndia = () => {
+  try {
+    return INDIA_TIMEZONES.includes(
+      Intl.DateTimeFormat().resolvedOptions().timeZone,
+    );
+  } catch {
+    return true; // if we can't tell, show the rupee price
+  }
+};
+
+// Show one price, not both. These are separate rates for separate markets, not
+// one rate converted — printing them side by side just invites the arithmetic
+// and makes it look like a markup.
+export const displayPrice = (tier) => ({
+  amount: isInIndia() ? tier.inr : tier.usd,
+  unit: tier.unit,
+});
+
+export const PRICING = {
+  single: {
+    inr: "₹2,000",
+    unit: "/session",
+    usd: "$50 USD",
+    blurb:
+      "For a specific decision, a stuck situation, or to find out whether working together fits.",
+    features: [
+      "A full hour on one situation, in depth",
+      "Frameworks for thinking it through clearly",
+      "Naming what is actually in the way",
+      "Concrete next steps you leave with",
+    ],
+  },
+  monthly: {
+    inr: "₹8,000",
+    unit: "/month",
+    usd: "$200 USD",
+    blurb:
+      "Four weekly sessions that build on each other, plus support in between. For work that needs more than one conversation.",
+    features: [
+      "Four one-hour sessions, roughly weekly",
+      "A plan we revisit as things change",
+      "Message me between sessions when something comes up",
+      "We adjust the approach based on what is actually working",
+    ],
+  },
+  executive: {
+    inr: "Rate on request",
+    unit: "",
+    usd: "Scoped to the engagement",
+    blurb:
+      "For people carrying real organisational load — workload, decisions under pressure, and the boundaries that keep it sustainable.",
+    features: [
+      "Workload, priorities and where your time actually goes",
+      "Thinking through high-stakes decisions with someone outside the org",
+      "Boundaries and recovery that survive a demanding schedule",
+      "Scheduling and scope set around your calendar, not a fixed package",
+    ],
+  },
+};

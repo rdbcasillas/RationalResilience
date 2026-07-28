@@ -1,3 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  /* Shared type accents — defined once here instead of re-imported per component */
+  .handwritten-text {
+    font-family: "Caveat", cursive;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .handwritten-alt {
+    font-family: "Kalam", cursive;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  /* The standard content card: warm, soft-edged, readable */
+  .card {
+    @apply bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/80 shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Torn paper edge — reserved for testimonials, where the handmade feel earns its keep */
+  .torn-top {
+    clip-path: polygon(
+      0 12px,
+      4% 4px,
+      8% 10px,
+      13% 2px,
+      18% 9px,
+      24% 3px,
+      29% 11px,
+      35% 4px,
+      40% 9px,
+      46% 2px,
+      51% 10px,
+      57% 3px,
+      62% 11px,
+      68% 4px,
+      73% 8px,
+      79% 2px,
+      84% 10px,
+      90% 3px,
+      95% 9px,
+      100% 4px,
+      100% 100%,
+      0 100%
+    );
+  }
+}

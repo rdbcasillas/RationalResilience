@@ -1,23 +1,14 @@
 <template>
-  <div class="app-wrapper">
+  <div class="min-h-screen flex flex-col bg-gradient-to-br from-amber-50 via-white to-blue-50">
     <NavigationMenu />
-    <div class="bg-gradient-to-br from-gray-50 to-blue-50 relative min-h-screen">
-    <!-- Geometric pattern overlay -->
-    <div class="absolute inset-0 opacity-[0.15]" 
-
-    </div>
-    <!-- Content -->
-    <div class="relative mt-6">
+    <main class="flex-1">
       <router-view></router-view>
-    </div>
-  </div>
+    </main>
+    <SiteFooter />
   </div>
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
 import NavigationMenu from "./components/NavigationMenu.vue";
+import SiteFooter from "./components/SiteFooter.vue";
 </script>
-
-<style>
-</style>

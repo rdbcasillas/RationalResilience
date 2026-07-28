@@ -4,9 +4,9 @@ import PricingPage from "../views/PricingPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     // Always scroll to top on navigation
-    return { top: 0 }
+    return { top: 0 };
   },
   routes: [
     {
@@ -27,21 +27,6 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/AboutView.vue"),
     },
-    // {
-    //   path: "/services",
-    //   name: "services",
-    //   component: () => import("../views/ServicesPage.vue"),
-    // },
-    // {
-    //   path: "/testimonials",
-    //   name: "testimonials",
-    //   component: () => import("../views/TestimonialsPage.vue"),
-    // },
-    {
-      path: "/blog",
-      name: "blog",
-      component: () => import("../views/BlogPage.vue"),
-    },
     {
       path: "/contact",
       name: "contact",
@@ -56,6 +41,12 @@ const router = createRouter({
       path: "/book-monthly",
       name: "book-monthly",
       component: () => import("../views/MonthlyBookingPage.vue"),
+    },
+    // Unknown URLs (including the retired /blog) land on the home page
+    // instead of a blank screen.
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: { name: "home" },
     },
   ],
 });

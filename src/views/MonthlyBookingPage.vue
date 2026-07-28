@@ -1,158 +1,57 @@
 <!-- views/MonthlyBookingPage.vue -->
 <template>
-  <div class="pt-16 pb-16">
-    <div class="max-w-4xl mx-auto px-6">
-      <h1 class="text-3xl font-bold mb-6 text-center">Start Monthly Journey</h1>
-      <h3 class="text-xl mb-6 text-justify">
-        Please book your first session below. After booking, you'll receive
-        instructions to set up the remaining three sessions for optimal spacing
-        throughout the month.
-      </h3>
+  <div class="pt-12 pb-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <router-link
+        to="/sessions"
+        class="inline-flex items-center gap-1 text-gray-500 hover:text-purple-600 transition-colors mb-6"
+      >
+        <ChevronLeft class="w-4 h-4" />
+        All session options
+      </router-link>
 
-      <!-- Package Details -->
-      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <div class="flex justify-between items-baseline mb-4">
-          <div>
-            <span class="text-2xl font-bold">₹4000</span>
-            <span class="text-gray-500">/month</span>
-          </div>
-          <div class="text-sm text-gray-500">($48 USD)</div>
+      <h1 class="text-4xl font-bold mb-2 handwritten-alt">
+        Start the monthly journey
+      </h1>
+      <p class="text-gray-600 text-lg mb-8">
+        Book your first session below. Once it is booked I will send you
+        instructions for setting up the remaining three, spaced across the month.
+        Nothing to pay to book — we sort payment out between us once we have
+        spoken.
+      </p>
+
+      <!-- Package summary -->
+      <div class="card p-8 mb-8">
+        <div class="mb-6">
+          <span class="text-3xl font-bold">{{ price.amount }}</span>
+          <span class="text-gray-500">{{ price.unit }}</span>
         </div>
 
-        <!-- Package Features -->
-        <ul class="space-y-3 mb-8">
-          <li class="flex items-center">
-            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Weekly 90-minute sessions to maintain momentum</span>
+        <ul class="space-y-3">
+          <li
+            v-for="feature in PRICING.monthly.features"
+            :key="feature"
+            class="flex items-start"
+          >
+            <CheckCircle
+              class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0"
+            />
+            <span>{{ feature }}</span>
           </li>
-          <li class="flex items-center">
-            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Custom growth plan that evolves with your progress</span>
-          </li>
-          <li class="flex items-center">
-            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Regular check-ins and support between sessions</span>
-          </li>
-          <li class="flex items-center">
-            <CheckCircle class="w-5 h-5 text-green-500 mr-2" />
-            <span>Ongoing refinement of strategies based on what works</span>
-          </li>
-          <!-- Other features -->
         </ul>
+      </div>
 
-        <PaymentOptions />
-
-        <!-- Scheduling Calendar -->
-        <!-- Cal.com Embed with Loading States -->
-        <div class="relative">
-          <!-- Loading Message -->
-          <div v-if="isLoading" class="text-center py-8">
-            <p class="text-blue-600 text-lg animate-pulse">
-              Fetching calendar...
-            </p>
-          </div>
-
-          <!-- Error Message -->
-          <div v-if="hasError" class="text-center py-8">
-            <p class="text-red-600 text-lg mb-4">Unable to load calendar</p>
-            <button
-              @click="reloadCalendar"
-              class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            >
-              Refresh Page
-            </button>
-          </div>
-
-          <div
-            id="my-cal-inline"
-            style="width: 100%; height: 100vh; overflow: scroll"
-          ></div>
-        </div>
+      <div class="card p-4 md:p-6">
+        <CalEmbed :cal-link="CAL_SESSION_LINK" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { CheckCircle } from "lucide-vue-next";
-import { ref, onMounted, watch } from "vue";
-import PaymentOptions from "@/components/PaymentOptions.vue";
+import { CheckCircle, ChevronLeft } from "lucide-vue-next";
+import CalEmbed from "@/components/CalEmbed.vue";
+import { PRICING, CAL_SESSION_LINK, displayPrice } from "@/config/site";
 
-const isLoading = ref(true);
-const hasError = ref(false);
-
-const initializeCalendar = () => {
-  try {
-    (function (C, A, L) {
-      let p = function (a, ar) {
-        a.q.push(ar);
-      };
-      let d = C.document;
-      C.Cal =
-        C.Cal ||
-        function () {
-          let cal = C.Cal;
-          let ar = arguments;
-          if (!cal.loaded) {
-            cal.ns = {};
-            cal.q = cal.q || [];
-            d.head.appendChild(d.createElement("script")).src = A;
-            cal.loaded = true;
-          }
-          if (ar[0] === L) {
-            const api = function () {
-              p(api, arguments);
-            };
-            const namespace = ar[1];
-            api.q = api.q || [];
-            typeof namespace === "string"
-              ? (cal.ns[namespace] = api) && p(api, ar)
-              : p(cal, ar);
-            return;
-          }
-          p(cal, ar);
-        };
-    })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    Cal("init", "90min", { origin: "https://cal.com" });
-    Cal.ns["90min"]("inline", {
-      elementOrSelector: "#my-cal-inline",
-      config: { layout: "month_view", theme: "light" },
-      calLink: "vatsal-mehra-tblt4g/90min",
-    });
-    Cal.ns["90min"]("ui", {
-      theme: "light",
-      cssVarsPerTheme: { light: { "cal-brand": "#85bde2" } },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    });
-
-    // Set timeout to check if calendar loaded
-    setTimeout(() => {
-      const calendarElement = document.querySelector("#my-cal-inline iframe");
-      if (!calendarElement) {
-        hasError.value = true;
-      }
-      isLoading.value = false;
-    }, 5000); // Check after 5 seconds
-  } catch (error) {
-    console.error("Calendar initialization failed:", error);
-    hasError.value = true;
-    isLoading.value = false;
-  }
-};
-
-const reloadCalendar = () => {
-  window.location.reload();
-};
-
-onMounted(() => {
-  initializeCalendar();
-});
+const price = displayPrice(PRICING.monthly);
 </script>
-
-<style>
-.overflow-hidden {
-  overflow: hidden;
-}
-</style>

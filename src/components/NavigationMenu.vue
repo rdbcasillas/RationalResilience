@@ -37,12 +37,14 @@
               <path d="M2 5 Q 12 3, 25 5 T 48 4" stroke="#8B5CF6" stroke-width="2" fill="none" stroke-linecap="round"/>
             </svg>
           </router-link>
-          <router-link
-            to="/sessions"
+          <a
+            :href="CAL_INTRO_URL"
+            target="_blank"
+            rel="noopener noreferrer"
             class="ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
-            Book Session
-          </router-link>
+            Free intro call
+          </a>
         </div>
 
         <!-- Mobile menu button -->
@@ -71,13 +73,15 @@
             {{ item.name }}
           </router-link>
           <div class="pt-3 px-2">
-            <router-link
-              to="/sessions"
+            <a
+              :href="CAL_INTRO_URL"
+              target="_blank"
+              rel="noopener noreferrer"
               class="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-full font-medium hover:shadow-lg transition-all"
               @click="isOpen = false"
             >
-              Book Session
-            </router-link>
+              Free intro call
+            </a>
           </div>
         </div>
       </div>
@@ -89,10 +93,10 @@
 </template>
 
 <script setup>
-console.log("NavigationMenu component loaded");
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { Brain, Menu, X } from "lucide-vue-next";
+import { Menu, X } from "lucide-vue-next";
+import { CAL_INTRO_URL } from "@/config/site";
 
 const route = useRoute();
 const isOpen = ref(false);
@@ -100,9 +104,7 @@ const isOpen = ref(false);
 const navigationItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  //{ name: "Services", path: "/services" },
-  //{ name: "Testimonials", path: "/testimonials" },
-  //{ name: "Blog", path: "/blog" },
+  { name: "Sessions", path: "/sessions" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -110,17 +112,3 @@ const isCurrentRoute = (path) => {
   return route.path === path;
 };
 </script>
-
-<style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@400;700&display=swap');
-
-.handwritten-text {
-  font-family: 'Caveat', cursive;
-  font-weight: 700;
-}
-
-.handwritten-alt {
-  font-family: 'Kalam', cursive;
-  font-weight: 700;
-}
-</style>
