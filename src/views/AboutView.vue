@@ -30,11 +30,11 @@
       <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
         <div class="flex justify-center md:order-1 order-2">
           <div
-            class="w-72 h-72 rounded-3xl overflow-hidden border-4 border-blue-200 shadow-2xl hover:scale-105 transition-transform duration-300 transform rotate-2"
+            class="w-full max-w-md aspect-[3/2] rounded-3xl overflow-hidden border-4 border-blue-200 shadow-2xl hover:scale-105 transition-transform duration-300 transform rotate-2"
           >
             <img
-              src="@/assets/images/mypic.jpeg"
-              alt="Vatsal Mehra"
+              src="@/assets/images/vatsal-talk.jpg"
+              alt="Vatsal Mehra speaking at a podium"
               class="w-full h-full object-cover"
             />
           </div>
