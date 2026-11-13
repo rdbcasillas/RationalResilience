@@ -1,1 +1,4 @@
-/*    /index.html   200
+# Routes without a static HTML file of their own. Everything else unknown
+# falls through to 404.html, which Netlify serves with a real 404 status.
+/book-session   /index.html   200
+/book-monthly   /index.html   200

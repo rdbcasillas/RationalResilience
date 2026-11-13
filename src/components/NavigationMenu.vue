@@ -1,99 +1,86 @@
 <!-- components/NavigationMenu.vue -->
 <template>
-  <nav class="bg-white/95 backdrop-blur-sm fixed w-full z-50 top-0 border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex justify-between items-center py-3">
-        <!-- Logo and Brand Name -->
-        <div class="flex items-center">
-          <router-link to="/" class="flex items-center group">
-            <img
-              src="@/assets/images/ratreslogo2.png"
-              alt="Rational Resilience Logo"
-              class="w-12 h-12 group-hover:rotate-6 transition-transform duration-300"
-            />
-            <span class="handwritten-alt text-2xl text-gray-800 ml-1">
-              Rational <span class="handwritten-text text-purple-600">Resilience</span>
-            </span>
-          </router-link>
-        </div>
+  <nav aria-label="Main" class="border-b border-line">
+    <div class="max-w-6xl mx-auto px-6 md:px-14">
+      <div class="flex justify-between items-center py-4">
+        <router-link to="/" class="flex items-center gap-2">
+          <img
+            src="@/assets/images/ratreslogo2.png"
+            alt=""
+            class="w-9 h-9"
+          />
+          <span class="font-medium text-[1.45rem] whitespace-nowrap"
+            >Rational Resilience</span
+          >
+        </router-link>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-2">
+        <!-- Desktop -->
+        <div class="hidden md:flex items-center gap-7">
           <router-link
             v-for="item in navigationItems"
             :key="item.path"
             :to="item.path"
-            class="nav-link text-gray-600 hover:text-purple-600 transition-all px-4 py-2 text-sm font-medium relative group"
-            :class="{ 'text-purple-600': isCurrentRoute(item.path) }"
+            class="text-[18px] text-muted hover:text-ink transition-colors"
+            :class="{ 'text-ink font-medium': isCurrent(item.path) }"
+            :aria-current="isCurrent(item.path) ? 'page' : undefined"
           >
             {{ item.name }}
-            <!-- Hand-drawn underline on hover/active -->
-            <svg
-              class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12 h-2 opacity-0 group-hover:opacity-100 transition-opacity"
-              :class="{ 'opacity-100': isCurrentRoute(item.path) }"
-              viewBox="0 0 50 8"
-              fill="none"
-            >
-              <path d="M2 5 Q 12 3, 25 5 T 48 4" stroke="#8B5CF6" stroke-width="2" fill="none" stroke-linecap="round"/>
-            </svg>
           </router-link>
           <a
             :href="CAL_INTRO_URL"
             target="_blank"
             rel="noopener noreferrer"
-            class="ml-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-medium hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            class="text-[18px] font-medium text-accent hover:text-accent-dark whitespace-nowrap"
           >
             Free intro call
           </a>
         </div>
 
         <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button
-            @click="isOpen = !isOpen"
-            class="text-gray-600 hover:text-purple-600 focus:outline-none p-2 rounded-full hover:bg-purple-50 transition-colors"
-          >
-            <Menu v-if="!isOpen" class="h-6 w-6" />
-            <X v-else class="h-6 w-6" />
-          </button>
-        </div>
+        <button
+          type="button"
+          class="md:hidden p-2 -mr-2 text-ink"
+          :aria-label="isOpen ? 'Close navigation' : 'Open navigation'"
+          :aria-expanded="isOpen"
+          aria-controls="mobile-menu"
+          @click="isOpen = !isOpen"
+        >
+          <Menu v-if="!isOpen" class="h-6 w-6" aria-hidden="true" />
+          <X v-else class="h-6 w-6" aria-hidden="true" />
+        </button>
       </div>
 
-      <!-- Mobile Navigation -->
-      <div v-if="isOpen" class="md:hidden pb-4">
-        <div class="space-y-2">
-          <router-link
-            v-for="item in navigationItems"
-            :key="item.path"
-            :to="item.path"
-            class="block px-4 py-3 text-base font-medium text-gray-600 hover:text-purple-600 hover:bg-purple-50/50 transition-all rounded-xl"
-            :class="{ 'text-purple-600 bg-purple-50/50': isCurrentRoute(item.path) }"
-            @click="isOpen = false"
-          >
-            {{ item.name }}
-          </router-link>
-          <div class="pt-3 px-2">
+      <!-- Mobile -->
+      <div v-show="isOpen" id="mobile-menu" class="md:hidden pb-5">
+        <ul class="space-y-1">
+          <li v-for="item in navigationItems" :key="item.path">
+            <router-link
+              :to="item.path"
+              class="block py-3 text-lg text-muted"
+              :class="{ 'text-ink font-medium': isCurrent(item.path) }"
+              :aria-current="isCurrent(item.path) ? 'page' : undefined"
+            >
+              {{ item.name }}
+            </router-link>
+          </li>
+          <li>
             <a
               :href="CAL_INTRO_URL"
               target="_blank"
               rel="noopener noreferrer"
-              class="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-full font-medium hover:shadow-lg transition-all"
-              @click="isOpen = false"
+              class="block py-3 text-lg font-medium text-accent"
             >
               Free intro call
             </a>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
-
-  <!-- Spacer to prevent content from hiding under fixed nav -->
-  <div class="h-16"></div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { Menu, X } from "lucide-vue-next";
 import { CAL_INTRO_URL } from "@/config/site";
@@ -101,14 +88,21 @@ import { CAL_INTRO_URL } from "@/config/site";
 const route = useRoute();
 const isOpen = ref(false);
 
+// Home is the logo.
 const navigationItems = [
-  { name: "Home", path: "/" },
+  { name: "Coaching", path: "/sessions" },
+  { name: "Workshops", path: "/workshops" },
   { name: "About", path: "/about" },
-  { name: "Sessions", path: "/sessions" },
   { name: "Contact", path: "/contact" },
 ];
 
-const isCurrentRoute = (path) => {
-  return route.path === path;
+const isCurrent = (path) => route.path === path;
+
+// Close the menu on navigation and on Escape.
+watch(() => route.path, () => (isOpen.value = false));
+const onKeydown = (e) => {
+  if (e.key === "Escape") isOpen.value = false;
 };
+onMounted(() => window.addEventListener("keydown", onKeydown));
+onBeforeUnmount(() => window.removeEventListener("keydown", onKeydown));
 </script>

@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import PricingPage from "../views/PricingPage.vue";
+import { pageMeta } from "@/config/pages";
+import { applyMetaToDocument } from "@/config/applyMeta";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  scrollBehavior() {
-    // Always scroll to top on navigation
-    return { top: 0 };
+  scrollBehavior(to) {
+    // Top of the page on navigation, unless the link targets a section.
+    return to.hash ? { el: to.hash, top: 24 } : { top: 0 };
   },
   routes: [
     {
@@ -18,6 +20,11 @@ const router = createRouter({
       path: "/sessions",
       name: "sessions",
       component: PricingPage,
+    },
+    {
+      path: "/workshops",
+      name: "workshops",
+      component: () => import("../views/WorkshopsPage.vue"),
     },
     {
       path: "/about",
@@ -42,13 +49,20 @@ const router = createRouter({
       name: "book-monthly",
       component: () => import("../views/MonthlyBookingPage.vue"),
     },
-    // Unknown URLs (including the retired /blog) land on the home page
-    // instead of a blank screen.
+    // Unknown URLs get a proper "page not found" screen.
     {
       path: "/:pathMatch(.*)*",
-      redirect: { name: "home" },
+      name: "not-found",
+      component: () => import("../views/NotFoundPage.vue"),
+      meta: { page: "/404" },
     },
   ],
+});
+
+// Keep the tab title, description, canonical and social tags in step with the
+// page. Unknown paths redirect home, so they pick up the homepage values.
+router.afterEach((to) => {
+  applyMetaToDocument(document, pageMeta(to.meta.page ?? to.path));
 });
 
 export default router;

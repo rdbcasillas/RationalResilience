@@ -1,63 +1,103 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Kalam:wght@400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* One book serif for everything. Garamond runs small, so the base size is
+     larger than usual. */
   body {
-    @apply text-gray-800 antialiased;
+    @apply bg-paper text-ink font-serif antialiased text-[20px] md:text-[21px] leading-[1.7];
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-medium text-ink;
+  }
+
+  /* One visible focus style for every interactive element. */
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent rounded-sm;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
 @layer components {
-  /* Shared type accents — defined once here instead of re-imported per component */
-  .handwritten-text {
-    font-family: "Caveat", cursive;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  /* Page column. Every page, the navigation and the footer share this left
+     edge. Text inside it is held to a comfortable reading width; add `wide`
+     to a child that should use the full column. */
+  .page {
+    @apply max-w-6xl mx-auto px-6 md:px-14;
   }
 
-  .handwritten-alt {
-    font-family: "Kalam", cursive;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  .page > :not([aria-hidden="true"]):not(.wide) {
+    max-width: 46rem;
   }
 
-  /* The standard content card: warm, soft-edged, readable */
+  /* Large and light: the size does the work, not the weight. */
+  .page-title {
+    @apply font-normal text-[2.6rem] sm:text-6xl lg:text-[3.9rem] leading-[1.12] mb-8;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-[2.1rem] leading-snug mb-4;
+  }
+
+  .lead {
+    @apply text-[22px] md:text-2xl leading-[1.65] text-ink;
+  }
+
+  .eyebrow {
+    @apply text-base font-medium uppercase tracking-[0.18em] text-muted mb-3;
+  }
+
+  .link {
+    @apply text-accent underline underline-offset-4 decoration-accent/40 hover:decoration-accent transition-colors;
+  }
+
+  /* The main action as a sticky note: pale yellow paper, set down slightly
+     crooked, with one corner lifting. It straightens when you reach for it. */
+  .btn {
+    @apply inline-block bg-[#EEE4C4] text-ink font-medium px-5 py-2.5 hover:bg-[#F1E8CB];
+    border-radius: 2px 2px 10px 2px / 2px 2px 4px 2px;
+    transform: rotate(-0.8deg);
+    box-shadow:
+      0 1px 0 rgba(28, 25, 23, 0.08),
+      2px 6px 9px -6px rgba(28, 25, 23, 0.3);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    transform: rotate(0deg) translateY(-1px);
+    box-shadow:
+      0 1px 0 rgba(28, 25, 23, 0.08),
+      3px 9px 12px -8px rgba(28, 25, 23, 0.32);
+  }
+
+  /* A quieter secondary action: an outline, no paper, no tilt. */
+  .btn-quiet {
+    @apply inline-block border border-ink/30 text-ink font-medium px-5 py-2.5 hover:border-ink/70 hover:bg-paper/60 transition-colors;
+    border-radius: 2px;
+  }
+
+  /* Flat tinted block for comparable offers. No border, shadow or rounding. */
   .card {
-    @apply bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-200/80 shadow-lg;
+    @apply bg-stone p-7 md:p-9;
   }
 
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-  }
-
-  /* Torn paper edge — reserved for testimonials, where the handmade feel earns its keep */
-  .torn-top {
-    clip-path: polygon(
-      0 12px,
-      4% 4px,
-      8% 10px,
-      13% 2px,
-      18% 9px,
-      24% 3px,
-      29% 11px,
-      35% 4px,
-      40% 9px,
-      46% 2px,
-      51% 10px,
-      57% 3px,
-      62% 11px,
-      68% 4px,
-      73% 8px,
-      79% 2px,
-      84% 10px,
-      90% 3px,
-      95% 9px,
-      100% 4px,
-      100% 100%,
-      0 100%
-    );
+  .rule {
+    @apply border-t border-line;
   }
 }
