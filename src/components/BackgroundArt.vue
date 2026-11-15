@@ -103,9 +103,10 @@ const startUnwinding = (knot) => {
   if (!frame) frame = requestAnimationFrame(tick);
 };
 
-// Place a knot every SPACING px, alternating margins, and none near the
-// footer. Sits just outside the reading column, or at the screen edge on
-// narrow screens where there is no margin.
+// Place a knot every SPACING px, and none near the footer. Always in the
+// right margin: the text is left-aligned in a wide container, so the left
+// side has no margin and a thread there runs through the words. On narrow
+// screens it sits at the screen edge.
 const layout = () => {
   const height = root.value?.offsetHeight ?? 0;
   // The homepage has its own sketch beside the opening, so its margin knots
@@ -120,7 +121,6 @@ const layout = () => {
   viewObserver?.disconnect();
   placed.length = 0;
   for (let i = first; i < count; i++) {
-    const side = i % 2 === 0 ? "left" : "right"; // CSS property used to position
     placed.push({
       ...KNOTS[i],
       page: route.path,
@@ -131,7 +131,7 @@ const layout = () => {
       d: threadPath(KNOTS[i], reduceMotion ? 0.6 : TIGHT),
       style: {
         top: `${40 + i * SPACING}px`,
-        [side]: "min(calc(50% + 23rem), calc(100% - 9rem))",
+        left: "min(calc(50% + 30rem), calc(100% - 9rem))",
       },
     });
   }

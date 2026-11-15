@@ -16,11 +16,16 @@
               Work through messy decisions, understand yourself better, and
               make progress on what matters to you.
             </h1>
-            <p class="lead mb-10 max-w-xl">
+            <p class="lead mb-5 max-w-xl">
               I'm
               <a :href="PORTFOLIO_URL" target="_blank" rel="noopener" class="link">Vatsal Mehra</a>. I offer one-to-one coaching and run rationality
               workshops. The common thread is helping people think better and
               actually use that thinking in their lives.
+            </p>
+            <p class="mb-10 max-w-xl">
+              I don't use a single fixed coaching formula. My approach draws on
+              rationality, psychology, emotional exploration and practical
+              experimentation.
             </p>
             <a
               :href="CAL_INTRO_URL"
@@ -30,7 +35,7 @@
               >Book a free intro call</a
             >
           </div>
-          <!-- The five steps from "How I work", as a notebook sketch -->
+          <!-- The five steps of a typical session, as a notebook sketch -->
           <HandSketch name="hero" class="hidden xl:block -mt-6 w-full h-auto" />
         </div>
       </div>
@@ -58,28 +63,44 @@
       </div>
     </section>
 
-    <!-- Approach -->
+    <!-- What a session is like. The five steps are listed here only on
+         screens too narrow to show the sketch beside the opening. -->
     <section class="page pb-16">
-      <h2 class="section-title">How I work</h2>
-      <p class="mb-6">
-        I don't use a single fixed coaching formula. My approach draws on
-        rationality, psychology, emotional exploration and practical
-        experimentation. Often the sequence looks like this:
-      </p>
-      <ol class="space-y-2 mb-6">
-        <li v-for="step in steps" :key="step.text" class="flex items-center gap-5">
-          <HandSketch
-            :name="step.sketch"
-            :pace="0.2"
-            :stroke-width="2"
-            class="w-12 h-12 flex-shrink-0"
-          />
-          <span>{{ step.text }}</span>
-        </li>
-      </ol>
-      <p class="text-muted">
-        Not every session follows that order. It depends on what you bring.
-      </p>
+      <h2 class="section-title">What a session is like</h2>
+      <div class="space-y-5">
+        <p>
+          Individual sessions are an hour, online. We might start from
+          something you bring, continue from last time, or pick up something I
+          think needs discussing. Sometimes I ask questions, sometimes I suggest a
+          framework or offer a perspective, and sometimes we design a small
+          experiment for you to try. I also use parts work, authentic relating
+          practices, or simply staying with something uncomfortable for long
+          enough to understand it.
+        </p>
+        <div class="xl:hidden">
+          <p class="mb-4">Often the sequence looks like this:</p>
+          <ol class="space-y-2">
+            <li v-for="step in steps" :key="step.text" class="flex items-center gap-5">
+              <HandSketch
+                :name="step.sketch"
+                :pace="0.2"
+                :stroke-width="2"
+                class="w-12 h-12 flex-shrink-0"
+              />
+              <span>{{ step.text }}</span>
+            </li>
+          </ol>
+        </div>
+        <p>
+          I'm not trying to make you dependent on a weekly call. I want you
+          to build trust in yourself, that you can come up with solutions on
+          your own instead of depending on me.
+        </p>
+        <p class="text-muted">
+          This is coaching, not therapy. If what you're dealing with needs
+          clinical care, I'll tell you and help you find it.
+        </p>
+      </div>
     </section>
 
     <!-- About -->

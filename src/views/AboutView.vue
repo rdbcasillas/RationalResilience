@@ -52,30 +52,6 @@
     </section>
 
     <section class="mb-12">
-      <h2 class="section-title">What a session is like</h2>
-      <div class="space-y-5">
-        <p>
-          Individual sessions are an hour, online. We might start from
-          something you bring, continue from last time, or pick up something I
-          think needs discussing. Sometimes I ask questions, sometimes I suggest a
-          framework or offer a perspective, and sometimes we design a small
-          experiment for you to try. I also use parts work, authentic relating
-          practices, or simply staying with something uncomfortable for long
-          enough to understand it.
-        </p>
-        <p>
-          I'm not trying to make you dependent on a weekly call. I want you
-          to build trust in yourself, that you can come up with solutions on
-          your own instead of depending on me.
-        </p>
-        <p class="text-muted">
-          This is coaching, not therapy. If what you're dealing with needs
-          clinical care, I'll tell you and help you find it.
-        </p>
-      </div>
-    </section>
-
-    <section class="mb-12">
       <h2 class="section-title">The rest of what I do</h2>
       <p>
         Coaching is one strand. My personal site has the rest: the projects I'm

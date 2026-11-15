@@ -44,7 +44,7 @@ export const PAGES = {
   "/about": {
     title: "About Vatsal Mehra — Rational Resilience",
     description:
-      "Software engineer turned coach and rationality workshop facilitator. How I got here and what a session is like.",
+      "Software engineer turned coach and rationality workshop facilitator. How I got here and what else I do.",
     ...TALK_PHOTO,
   },
   "/contact": {

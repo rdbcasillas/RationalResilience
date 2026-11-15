@@ -8,7 +8,7 @@
   /* One book serif for everything. Garamond runs small, so the base size is
      larger than usual. */
   body {
-    @apply bg-paper text-ink font-serif antialiased text-[20px] md:text-[21px] leading-[1.7];
+    @apply bg-paper text-ink font-serif antialiased text-[18px] md:text-[21px] leading-[1.7];
   }
 
   h1,
@@ -52,11 +52,11 @@
   }
 
   .lead {
-    @apply text-[22px] md:text-2xl leading-[1.65] text-ink;
+    @apply text-[20px] md:text-2xl leading-[1.65] text-ink;
   }
 
   .eyebrow {
-    @apply text-base font-medium uppercase tracking-[0.18em] text-muted mb-3;
+    @apply text-[1.15rem] md:text-[1.3rem] italic text-muted mb-3;
   }
 
   .link {
