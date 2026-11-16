@@ -10,9 +10,9 @@
           aria-hidden="true"
           class="absolute top-8 bottom-0 left-0 -right-[50vw] bg-panel/60 -z-[5]"
         ></div>
-        <div class="xl:grid xl:grid-cols-[minmax(0,1fr)_370px] xl:gap-12 xl:items-start">
+        <div class="md:grid md:grid-cols-[minmax(0,1fr)_250px] md:gap-8 lg:grid-cols-[minmax(0,1fr)_310px] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_370px] xl:gap-12 md:items-start">
           <div>
-            <h1 class="page-title max-w-3xl">
+            <h1 class="page-title max-w-3xl md:text-[2.7rem] lg:text-[3.2rem] xl:text-[3.9rem]">
               Work through messy decisions, understand yourself better, and
               make progress on what matters to you.
             </h1>
@@ -36,7 +36,7 @@
             >
           </div>
           <!-- The five steps of a typical session, as a notebook sketch -->
-          <HandSketch name="hero" class="hidden xl:block -mt-6 w-full h-auto" />
+          <HandSketch name="hero" class="hidden md:block xl:-mt-6 w-full h-auto" />
         </div>
       </div>
     </header>
@@ -80,7 +80,7 @@
           practices, or simply staying with something uncomfortable for long
           enough to understand it.
         </p>
-        <div class="xl:hidden">
+        <div class="md:hidden">
           <p class="mb-4">Often the sequence looks like this:</p>
           <ol class="space-y-2">
             <li v-for="step in steps" :key="step.text" class="flex items-center gap-5">

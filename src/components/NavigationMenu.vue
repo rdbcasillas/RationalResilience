@@ -3,24 +3,24 @@
   <nav aria-label="Main" class="border-b border-line">
     <div class="max-w-6xl mx-auto px-6 md:px-14">
       <div class="flex justify-between items-center py-4">
-        <router-link to="/" class="flex items-center gap-2">
+        <router-link to="/" class="flex items-center gap-2 flex-shrink-0">
           <img
             src="@/assets/images/ratreslogo2.png"
             alt=""
             class="w-9 h-9"
           />
-          <span class="font-medium text-[1.45rem] whitespace-nowrap"
+          <span class="font-medium text-[1.45rem] md:text-[1.25rem] lg:text-[1.45rem] whitespace-nowrap"
             >Rational Resilience</span
           >
         </router-link>
 
         <!-- Desktop -->
-        <div class="hidden md:flex items-center gap-7">
+        <div class="hidden md:flex items-center gap-4 lg:gap-7">
           <router-link
             v-for="item in navigationItems"
             :key="item.path"
             :to="item.path"
-            class="text-[18px] text-muted hover:text-ink transition-colors"
+            class="text-[16px] lg:text-[18px] text-muted hover:text-ink transition-colors"
             :class="{ 'text-ink font-medium': isCurrent(item.path) }"
             :aria-current="isCurrent(item.path) ? 'page' : undefined"
           >
@@ -30,7 +30,7 @@
             :href="CAL_INTRO_URL"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-[18px] font-medium text-accent hover:text-accent-dark whitespace-nowrap"
+            class="text-[16px] lg:text-[18px] font-medium text-accent hover:text-accent-dark whitespace-nowrap"
           >
             Free intro call
           </a>
