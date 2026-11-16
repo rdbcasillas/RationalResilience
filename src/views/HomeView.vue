@@ -19,8 +19,8 @@
             <p class="lead mb-5 max-w-xl">
               I'm
               <a :href="PORTFOLIO_URL" target="_blank" rel="noopener" class="link">Vatsal Mehra</a>. I offer one-to-one coaching and run rationality
-              workshops. The common thread is helping people think better and
-              actually use that thinking in their lives.
+              workshops. The goal is to help people think clearly, get unstuck
+              and trust themselves to act.
             </p>
             <p class="mb-10 max-w-xl">
               I don't use a single fixed coaching formula. My approach draws on
@@ -71,9 +71,12 @@
         <p>
           Individual sessions are an hour, online. We might start from
           something you bring, continue from last time, or pick up something I
-          think needs discussing. Sometimes I ask questions, sometimes I suggest a
-          framework or offer a perspective, and sometimes we design a small
-          experiment for you to try. I also use parts work, authentic relating
+          think needs discussing. We take time to deeply understand your
+          relationship with the problem, and on many occasions people discover
+          along the way that the problem is actually a different one. Once we
+          have a framing that fits better, we design a small experiment for
+          you to run in your real life before we next meet. Then you report
+          back, and we adjust based on what actually happened. I also use parts work, authentic relating
           practices, or simply staying with something uncomfortable for long
           enough to understand it.
         </p>
